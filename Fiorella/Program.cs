@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Fiorella.Dto;
 using Fiorella.Validation;
+using Fiorella.Dto.Login;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File(
@@ -52,10 +53,16 @@ try
             builder => builder.WithOrigins("http://localhost:3000").WithMethods("PUT", "DELETE", "GET"));
     });
 
-    builder.Services.AddScoped<IPictureRepository, PictureRepository>();
+    
     builder.Services.AddTransient(typeof(IRepository<,>), typeof(EfRepository<,>));
     builder.Services.AddTransient<IUnitofWork, UnitofWork>();
+
+    builder.Services.AddScoped<IPictureRepository, PictureRepository>();
+    builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+
     builder.Services.AddScoped<IValidator<PictureDto>, PictureValidator>();
+    builder.Services.AddScoped<IValidator<LoginRequest>, LoginValidator>();
 
     var app = builder.Build();
 

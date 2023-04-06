@@ -4,6 +4,7 @@ using Fiorella.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fiorella.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230406110620_user-added")]
+    partial class useradded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,9 +84,6 @@ namespace Fiorella.Migrations
                     b.Property<string>("Firstname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Lastname")
                         .IsRequired()

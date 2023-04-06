@@ -7,5 +7,7 @@
         public string? Category { get; set; }
         public int Price { get; set; }
         public string Source { get; set; }
+
+        public virtual ICollection<Picture>? Pictures { get; set; }
     }
 }

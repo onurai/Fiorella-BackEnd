@@ -11,6 +11,7 @@ namespace Fiorella.Data.Context
         }
 
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<User> Users { get; set; }  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

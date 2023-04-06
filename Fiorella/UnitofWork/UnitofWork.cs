@@ -8,11 +8,13 @@ namespace Fiorella.UnitofWork
     {
         private readonly AppDbContext _appDbContext;
         public IPictureRepository pictureRepository { get; set; }
+        public IUserRepository userRepository { get; set; } 
+        
 
         public UnitofWork(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-
+            userRepository = new UserRepository(_appDbContext);
             pictureRepository = new PictureRepository(_appDbContext);
         }
 
